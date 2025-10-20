@@ -1,8 +1,4 @@
----
-
 # Lezione 3: Creare il paddle e la pallina e far muovere il paddle
-
----
 
 ### Obiettivi della lezione
 
