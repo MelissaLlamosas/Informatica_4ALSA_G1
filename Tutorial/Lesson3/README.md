@@ -8,8 +8,6 @@
 * Limitare il movimento del paddle ai bordi della finestra
 * Muovere la pallina insieme al paddle quando è ferma
 
----
-
 ## 1. Creare il paddle (la barra controllata dal giocatore)
 
 ```python
@@ -22,8 +20,6 @@ paddle_speed = 6
 * `y = HEIGHT - 40`: il paddle è vicino al bordo basso della finestra, a 40 pixel di distanza.
 * `PADDLE_WIDTH = 80`, `PADDLE_HEIGHT = 15` definiscono dimensioni del paddle.
 * `paddle_speed = 6` indica di quanti pixel si sposta il paddle ogni aggiornamento.
-
----
 
 ## 2. Creare la pallina (un rettangolo che contiene un cerchio)
 
