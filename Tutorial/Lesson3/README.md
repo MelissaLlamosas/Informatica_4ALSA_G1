@@ -1,5 +1,3 @@
-Certamente! Ecco la **lezione completa, passo passo, integrando la creazione del paddle e della pallina** con il movimento del paddle (come da codice che mi hai dato), spiegata con termini chiari per una classe di 3° liceo scienze applicate.
-
 ---
 
 # Lezione 3: Creare il paddle e la pallina e far muovere il paddle
