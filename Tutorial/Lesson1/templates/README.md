@@ -3,7 +3,7 @@
 ```markdown
 Lezione 1 — Template di esercitazione
 
-Completa il codice seguendo i passaggi e sostituendo i # TODO: con le istruzioni.
+Completa il codice seguendo i passaggi e sostituendo i # TODO: con le soluzioni.
 
 
 ```python
