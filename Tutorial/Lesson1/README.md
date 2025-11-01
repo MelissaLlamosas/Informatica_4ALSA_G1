@@ -3,9 +3,7 @@
 In questa prima lezione impareremo a creare la finestra di gioco, impostare Pygame e mostrare uno sfondo bianco.  
 Questo è il punto di partenza per qualsiasi videogioco 2D.
 
-# 🧱 Lezione 1 — Creare la finestra e impostare Pygame
-
-## 🎯 Obiettivo dell’esercizio
+## Obiettivo dell’esercizio
 > In questa prima lezione creeremo la base del nostro gioco **Breakout**, imparando a:
 > - Inizializzare Pygame  
 > - Creare la finestra di gioco  
@@ -16,11 +14,11 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-## 🧩 Concetti chiave
+## Concetti chiave
 
 ---
 
-### 🔹 1. Inizializzare Pygame
+### 1. Inizializzare Pygame
 > Prima di poter usare qualsiasi funzione di Pygame, bisogna **inizializzarlo** con:
 >
 > ```python
@@ -33,7 +31,7 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-### 🔹 2. Creare la finestra di gioco
+### 2. Creare la finestra di gioco
 > La finestra principale si crea con `pygame.display.set_mode()` specificando **larghezza** e **altezza**:
 >
 > ```python
@@ -46,7 +44,7 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-### 🔹 3. Impostare titolo, FPS e clock
+### 3. Impostare titolo, FPS e clock
 > Il titolo è il testo che appare in alto sulla finestra:
 >
 > ```python
@@ -65,7 +63,7 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-### 🔹 4. Definire i colori
+### 4. Definire i colori
 > In Pygame i colori sono tuple RGB, cioè tre numeri tra 0 e 255 che rappresentano **Rosso, Verde e Blu**.
 >
 > ```python
@@ -78,7 +76,7 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-### 🔹 5. Mostrare uno sfondo bianco
+### 5. Mostrare uno sfondo bianco
 > Il metodo `screen.fill()` riempie la finestra con un colore:
 >
 > ```python
@@ -91,7 +89,7 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-### 🔹 6. Loop principale del gioco
+### 6. Loop principale del gioco
 > Per mantenere aperta la finestra e gestire gli eventi (come chiudere con la “X”), serve un **game loop**:
 >
 > ```python
@@ -110,7 +108,7 @@ Questo è il punto di partenza per qualsiasi videogioco 2D.
 
 ---
 
-## 🚀 Codice completo della Lezione 1
+## Codice completo della Lezione 1
 
 ```python
 import pygame
