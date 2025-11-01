@@ -12,7 +12,7 @@ import pygame  # Importa la libreria Pygame per creare giochi
 
 # Inizializza Pygame
 
-pygame.init()
+pygame.init() ```
 
 ### Spiegazione
 
