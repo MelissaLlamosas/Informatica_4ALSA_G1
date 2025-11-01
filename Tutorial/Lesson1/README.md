@@ -13,8 +13,14 @@ import pygame  # Importa la libreria Pygame per creare giochi
 # Inizializza Pygame
 
 pygame.init()
-Spiegazione:
-	•	import pygame serve per poter usare tutte le funzioni del modulo.
-	•	pygame.init() avvia tutti i moduli necessari (grafica, suono, input…).
 
-Risultato atteso:
+### Spiegazione
+
+- `import pygame` serve per poter usare tutte le funzioni del modulo.
+- `pygame.init()` avvia tutti i moduli necessari (grafica, suono, input...).
+
+---
+
+### Risultato atteso
+
+![inizializzazione_pygame](../images/inizializzazione_pygame.png)
