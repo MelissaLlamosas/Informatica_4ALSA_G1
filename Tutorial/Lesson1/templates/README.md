@@ -1,11 +1,10 @@
 
 
 ```markdown
-# 🧩 Lezione 1 — Template di esercitazione
+Lezione 1 — Template di esercitazione
 
 Completa il codice seguendo i passaggi e sostituendo i `# TODO:` con le istruzioni.
 
----
 
 ```python
 # TODO: Importa la libreria Pygame
