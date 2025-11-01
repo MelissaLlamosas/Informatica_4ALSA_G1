@@ -1,6 +1,4 @@
----
 
-## 📁 `Lezione_1/TEMPLATE.md`
 
 ```markdown
 # 🧩 Lezione 1 — Template di esercitazione
