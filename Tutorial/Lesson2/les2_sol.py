@@ -1,6 +1,5 @@
 # Crea blocchi colorati
-colors = [(255, 0, 0), (255, 165, 0), (255, 255, 0),
-          (0, 255, 0), (0, 0, 255), (128, 0, 128)]  # Colori possibili
+colors = [(192, 222, 234), (252, 186, 205), (208, 193, 251), (249, 181, 99), (196, 242, 240), (207, 252, 170)]   # Colori possibili
 
 blocks = []  # Lista per salvare tutti i blocchi
 for row in range(BLOCK_ROWS):
