@@ -1,234 +1,328 @@
-Perfetto! Ecco la **Lezione 6: Vittoria, sconfitta e miglioramenti** scritta **nello stesso stile e formato** della tua “Lezione 3”, passo per passo e pensata per studenti che usano **Pygame** 👇
 
----
-
-# 🏁 Lezione 6: Vittoria, sconfitta e miglioramenti
+# Lezione 6: Vittoria, sconfitta e miglioramenti
 
 ### Obiettivi della lezione
 
-* Far terminare il gioco quando la pallina cade → **Game Over**
-* Mostrare un **messaggio di vittoria** quando tutti i blocchi sono distrutti
-* Resettare la pallina e il gioco dopo la vittoria o la sconfitta
-* Aggiungere **effetti grafici o sonori** per rendere il gioco più interessante
-* Proporre una **sfida avanzata**: blocchi che si muovono o non si distruggono
+* Gestire la **fine del gioco** (quando la pallina cade).
+* Mostrare un **messaggio di vittoria** quando tutti i blocchi sono distrutti.
+* **Resettare la pallina** per far ripartire il gioco.
+* Aggiungere **punteggio** e semplici **effetti visivi o sonori**.
+* Proporre una **challenge**: blocchi che si rompono solo dopo due colpi.
 
 ---
 
-## 1. Game Over: la pallina cade sotto il bordo
+## 1. Game over: quando la pallina cade 
 
-Quando la pallina supera il bordo inferiore della finestra, il gioco deve terminare.
+Controlliamo se la pallina **cade oltre il bordo inferiore** dello schermo.
+In quel caso, la partita si interrompe e la pallina viene rimessa sopra il paddle:
 
 ```python
 if ball.bottom >= HEIGHT:
-    game_over = True
+    ball_active = False  # La pallina si ferma
+    # Rimetti la pallina sopra il paddle
+    ball.x = paddle.centerx - BALL_RADIUS
+    ball.y = paddle.top - BALL_RADIUS*2
 ```
 
-Se la condizione è vera, disegniamo un messaggio e blocchiamo il gioco.
+**Spiegazione:**
+
+* `ball.bottom` indica la posizione verticale del bordo inferiore della pallina.
+* Quando supera `HEIGHT`, vuol dire che è uscita dallo schermo.
+* `ball_active = False` blocca il movimento, e la pallina torna al punto di partenza.
+
+ Questo comportamento simula una **sconfitta temporanea** (non chiude il gioco).
+
+---
+
+## 2. Mostrare la vittoria 
+
+La vittoria avviene quando **tutti i blocchi sono stati distrutti**:
 
 ```python
-if game_over:
-    draw_text("GAME OVER! Premi SPAZIO per riprovare", font, RED, screen, WIDTH // 2, HEIGHT // 2)
+if not blocks:
+    win_text = font.render("Hai Vinto!", True, (0, 128, 0))
+    screen.blit(win_text, (WIDTH // 2 - 60, HEIGHT // 2))
     pygame.display.flip()
-    waiting_restart = True
+    pygame.time.wait(2000)
+    running = False
 ```
 
-📘 **Spiegazione:**
+**Cosa succede:**
 
-* `ball.bottom` è la coordinata inferiore del rettangolo della pallina.
-* Quando `ball.bottom` è uguale o maggiore dell’altezza della finestra (`HEIGHT`), significa che la pallina è “caduta”.
-* `game_over = True` ferma la logica di gioco (non aggiorniamo più la pallina o i blocchi).
-* `draw_text()` è una piccola funzione di utilità per scrivere messaggi sullo schermo (puoi crearla tu).
+* `if not blocks:` controlla se la lista `blocks` è vuota.
+* Se sì, mostra “Hai Vinto!” al centro dello schermo per 2 secondi.
+* Poi il gioco termina (`running = False`).
 
-Esempio di funzione per scrivere testo:
-
-```python
-def draw_text(text, font, color, surface, x, y):
-    text_obj = font.render(text, True, color)
-    text_rect = text_obj.get_rect(center=(x, y))
-    surface.blit(text_obj, text_rect)
-```
+In un’estensione futura, potresti **ricominciare automaticamente** il gioco invece di chiuderlo.
 
 ---
 
-## 2. Mostrare un messaggio di vittoria
+## 3. Aggiungere un punteggio 
 
-Quando tutti i blocchi sono stati distrutti, vogliamo mostrare un messaggio di vittoria.
-
-All’interno del ciclo di gioco, aggiungiamo:
+Nel codice, ogni volta che un blocco viene distrutto, il punteggio aumenta:
 
 ```python
-if all(brick["active"] == False for brick in bricks):
-    victory = True
+score += 1
 ```
 
-E poi disegniamo il messaggio:
+E viene mostrato in basso allo schermo:
 
 ```python
-if victory:
-    draw_text("HAI VINTO! Premi SPAZIO per continuare", font, GREEN, screen, WIDTH // 2, HEIGHT // 2)
-    pygame.display.flip()
-    waiting_restart = True
+score_text = font.render(f"Punteggio: {score}", True, (0, 0, 0))
+screen.blit(score_text, (10, HEIGHT - 30))
 ```
 
-📘 **Spiegazione:**
-
-* `all()` controlla che **tutti i blocchi** abbiano `active == False` → significa che sono stati distrutti.
-* `victory = True` indica che il giocatore ha vinto.
-* Come nel “Game Over”, il messaggio appare e il gioco si ferma finché il giocatore non preme **spazio**.
+Il punteggio aiuta il giocatore a monitorare i propri progressi e la precisione dei colpi.
 
 ---
 
-## 3. Resettare la pallina e il gioco
+## 4. Effetti visivi e sonori 
 
-Quando il giocatore preme **spazio**, possiamo resettare la posizione della pallina e ricominciare.
+### Effetti sonori
 
-```python
-if waiting_restart:
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_SPACE]:
-        game_over = False
-        victory = False
-        waiting_restart = False
-        reset_ball()
-        reset_bricks()
-```
-
-Definiamo ora la funzione per resettare la pallina:
-
-```python
-def reset_ball():
-    ball.x = paddle.centerx
-    ball.y = paddle.top - BALL_RADIUS * 2
-    ball_dx = 4
-    ball_dy = -4
-    return ball_dx, ball_dy
-```
-
-📘 **Spiegazione:**
-
-* La pallina torna sopra il paddle, come all’inizio del gioco.
-* Le velocità orizzontale (`ball_dx`) e verticale (`ball_dy`) vengono reimpostate ai valori di partenza.
-
----
-
-## 4. Aggiungere effetti (grafica e suoni)
-
-Per rendere il gioco più interessante, aggiungiamo effetti visivi o sonori.
-
-### 🔊 Suoni
-
-Usiamo `pygame.mixer.Sound()` per caricare i suoni.
+Puoi aggiungere effetti con `pygame.mixer.Sound`:
 
 ```python
 hit_sound = pygame.mixer.Sound("hit.wav")
 win_sound = pygame.mixer.Sound("win.wav")
-lose_sound = pygame.mixer.Sound("lose.wav")
+
+# Quando colpisci un blocco
+hit_sound.play()
+
+# Quando vinci
+win_sound.play()
 ```
 
-Poi nei momenti giusti:
+### Effetti visivi
 
 ```python
-if collision_with_brick:
-    hit_sound.play()
-
-if victory:
-    win_sound.play()
-
-if game_over:
-    lose_sound.play()
+if not blocks:
+    screen.fill((200, 255, 200))  # Colore verde chiaro per la vittoria
 ```
 
-### 🌈 Grafica
-
-Puoi far lampeggiare lo sfondo o cambiare il colore della pallina:
-
-```python
-if victory:
-    screen.fill((0, 255, 0))
-elif game_over:
-    screen.fill((255, 0, 0))
-```
+ Questi dettagli rendono il gioco più vivo e divertente.
 
 ---
 
-## 5. Challenge 💪
+## 5. Challenge: blocchi che si rompono solo al secondo colpo 
 
-### Challenge 1: Blocchi che si muovono lentamente
+In questa variante, i blocchi **non si distruggono subito**, ma solo **dopo essere stati colpiti due volte**.
+Per farlo, assegniamo ad ogni blocco una **vita iniziale** di 2 colpi (`'hits': 2`).
+
+### Creazione dei blocchi con punti vita
 
 ```python
-for brick in bricks:
-    if brick["active"]:
-        brick["rect"].x += math.sin(pygame.time.get_ticks() / 1000) * 0.5
+blocks = []
+for row in range(BLOCK_ROWS):
+    for col in range(BLOCK_COLS):
+        rect = pygame.Rect(col * BLOCK_WIDTH, row * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
+        color = random.choice(colors)
+        blocks.append({'rect': rect, 'color': color, 'hits': 2})
 ```
 
-📘 Così i blocchi oscillano lentamente a destra e sinistra!
+### Gestione della collisione
+
+```python
+for block in blocks[:]:
+    if ball.colliderect(block['rect']):
+        block['hits'] -= 1  # Il blocco perde una “vita”
+        ball_dy *= -1       # La pallina rimbalza
+
+        if block['hits'] == 1:
+            block['color'] = (150, 150, 150)  # Cambia colore per mostrare il danno
+        elif block['hits'] <= 0:
+            blocks.remove(block)              # Si rompe al secondo colpo
+            score += 1
+        break
+```
+
+**Spiegazione:**
+
+* Ogni blocco parte con `hits = 2`.
+* Dopo il primo colpo → `hits` diventa `1` → cambia colore per segnalare che è danneggiato.
+* Dopo il secondo colpo → `hits = 0` → viene rimosso dalla lista (`blocks.remove`).
+
+Questo introduce una **meccanica di resistenza**, rendendo il gioco più interessante.
 
 ---
 
-### Challenge 2: Blocchi indistruttibili
+## 6. Challenge per la classe 
 
-Aggiungi un tipo speciale di blocco:
-
-```python
-brick = {"rect": rect, "active": True, "unbreakable": random.choice([True, False])}
-```
-
-E quando controlli la collisione:
-
-```python
-if brick["active"] and not brick["unbreakable"]:
-    brick["active"] = False
-```
-
-📘 I blocchi “unbreakable” rimarranno anche dopo il colpo!
+1. Mostra un **messaggio di “Game Over”** quando la pallina cade.
+2. Crea blocchi con **resistenza diversa** (alcuni con 1, altri con 3 colpi).
 
 ---
 
-## 6. Riassunto del codice principale
+## 7. Domande per riflettere 
+
+* Come potresti indicare visivamente quanti colpi restano a un blocco?
+* Quale strategia rende più divertente il gioco: blocchi forti o tanti blocchi deboli?
+* Come potresti salvare il punteggio più alto?
+* Cosa succederebbe se la pallina colpisse due blocchi nello stesso frame?
+
+
+
+
+# Lezione 6: Vittoria, sconfitta e miglioramenti
+
+### Obiettivi della lezione
+
+* Gestire la **fine del gioco** (quando la pallina cade).
+* Mostrare un **messaggio di vittoria** quando tutti i blocchi sono distrutti.
+* **Resettare la pallina** per far ripartire il gioco.
+* Aggiungere **punteggio** e semplici **effetti visivi o sonori**.
+* Proporre una **challenge**: blocchi che si rompono solo dopo due colpi.
+
+---
+
+## 1. Game over: quando la pallina cade 
+
+Controlliamo se la pallina **cade oltre il bordo inferiore** dello schermo.
+In quel caso, la partita si interrompe e la pallina viene rimessa sopra il paddle:
 
 ```python
-# Controllo sconfitta
 if ball.bottom >= HEIGHT:
-    game_over = True
-
-# Controllo vittoria
-if all(not b["active"] for b in bricks):
-    victory = True
-
-# Mostra messaggi
-if game_over:
-    draw_text("GAME OVER! Premi SPAZIO per riprovare", font, RED, screen, WIDTH // 2, HEIGHT // 2)
-elif victory:
-    draw_text("HAI VINTO! Premi SPAZIO per continuare", font, GREEN, screen, WIDTH // 2, HEIGHT // 2)
-
-# Reset
-if waiting_restart:
-    if keys[pygame.K_SPACE]:
-        game_over = False
-        victory = False
-        waiting_restart = False
-        ball_dx, ball_dy = reset_ball()
-        reset_bricks()
+    ball_active = False  # La pallina si ferma
+    # Rimetti la pallina sopra il paddle
+    ball.x = paddle.centerx - BALL_RADIUS
+    ball.y = paddle.top - BALL_RADIUS*2
 ```
 
----
+**Spiegazione:**
 
-## 7. Domande per riflettere 🤔
+* `ball.bottom` indica la posizione verticale del bordo inferiore della pallina.
+* Quando supera `HEIGHT`, vuol dire che è uscita dallo schermo.
+* `ball_active = False` blocca il movimento, e la pallina torna al punto di partenza.
 
-* Come capisce il gioco quando tutti i blocchi sono stati distrutti?
-* Cosa succede se non resetti le velocità della pallina dopo la sconfitta?
-* Come potresti mostrare il punteggio sullo schermo?
-
----
-
-## 🧠 Approfondimenti consigliati
-
-* Aggiungi un contatore di **vite**: il gioco finisce solo dopo 3 cadute.
-* Crea **livelli multipli**: ogni volta che vinci, carica nuovi blocchi.
-* Implementa una **classifica dei punteggi** con `pygame.font` e file di testo.
+ Questo comportamento simula una **sconfitta temporanea** (non chiude il gioco).
 
 ---
 
-Vuoi che ti scriva anche la versione del codice completo della **Lezione 6** in un unico file `.py` pronto da eseguire?
-Posso includere anche i suoni e i messaggi già implementati.
+## 2. Mostrare la vittoria 
+
+La vittoria avviene quando **tutti i blocchi sono stati distrutti**:
+
+```python
+if not blocks:
+    win_text = font.render("Hai Vinto!", True, (0, 128, 0))
+    screen.blit(win_text, (WIDTH // 2 - 60, HEIGHT // 2))
+    pygame.display.flip()
+    pygame.time.wait(2000)
+    running = False
+```
+
+**Cosa succede:**
+
+* `if not blocks:` controlla se la lista `blocks` è vuota.
+* Se sì, mostra “Hai Vinto!” al centro dello schermo per 2 secondi.
+* Poi il gioco termina (`running = False`).
+
+In un’estensione futura, potresti **ricominciare automaticamente** il gioco invece di chiuderlo.
+
+---
+
+## 3. Aggiungere un punteggio 
+
+Nel codice, ogni volta che un blocco viene distrutto, il punteggio aumenta:
+
+```python
+score += 1
+```
+
+E viene mostrato in basso allo schermo:
+
+```python
+score_text = font.render(f"Punteggio: {score}", True, (0, 0, 0))
+screen.blit(score_text, (10, HEIGHT - 30))
+```
+
+Il punteggio aiuta il giocatore a monitorare i propri progressi e la precisione dei colpi.
+
+---
+
+## 4. Effetti visivi e sonori 
+
+### Effetti sonori
+
+Puoi aggiungere effetti con `pygame.mixer.Sound`:
+
+```python
+hit_sound = pygame.mixer.Sound("hit.wav")
+win_sound = pygame.mixer.Sound("win.wav")
+
+# Quando colpisci un blocco
+hit_sound.play()
+
+# Quando vinci
+win_sound.play()
+```
+
+### Effetti visivi
+
+```python
+if not blocks:
+    screen.fill((200, 255, 200))  # Colore verde chiaro per la vittoria
+```
+
+ Questi dettagli rendono il gioco più vivo e divertente.
+
+---
+
+## 5. Challenge: blocchi che si rompono solo al secondo colpo 
+
+In questa variante, i blocchi **non si distruggono subito**, ma solo **dopo essere stati colpiti due volte**.
+Per farlo, assegniamo ad ogni blocco una **vita iniziale** di 2 colpi (`'hits': 2`).
+
+### Creazione dei blocchi con punti vita
+
+```python
+blocks = []
+for row in range(BLOCK_ROWS):
+    for col in range(BLOCK_COLS):
+        rect = pygame.Rect(col * BLOCK_WIDTH, row * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
+        color = random.choice(colors)
+        blocks.append({'rect': rect, 'color': color, 'hits': 2})
+```
+
+### Gestione della collisione
+
+```python
+for block in blocks[:]:
+    if ball.colliderect(block['rect']):
+        block['hits'] -= 1  # Il blocco perde una “vita”
+        ball_dy *= -1       # La pallina rimbalza
+
+        if block['hits'] == 1:
+            block['color'] = (150, 150, 150)  # Cambia colore per mostrare il danno
+        elif block['hits'] <= 0:
+            blocks.remove(block)              # Si rompe al secondo colpo
+            score += 1
+        break
+```
+
+**Spiegazione:**
+
+* Ogni blocco parte con `hits = 2`.
+* Dopo il primo colpo → `hits` diventa `1` → cambia colore per segnalare che è danneggiato.
+* Dopo il secondo colpo → `hits = 0` → viene rimosso dalla lista (`blocks.remove`).
+
+Questo introduce una **meccanica di resistenza**, rendendo il gioco più interessante.
+
+---
+
+## 6. Challenge per la classe 
+
+1. Mostra un **messaggio di “Game Over”** quando la pallina cade.
+2. Crea blocchi con **resistenza diversa** (alcuni con 1, altri con 3 colpi).
+
+---
+
+## 7. Domande per riflettere 
+
+* Come potresti indicare visivamente quanti colpi restano a un blocco?
+* Quale strategia rende più divertente il gioco: blocchi forti o tanti blocchi deboli?
+* Come potresti salvare il punteggio più alto?
+* Cosa succederebbe se la pallina colpisse due blocchi nello stesso frame?
+
+
 
