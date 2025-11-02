@@ -7,7 +7,7 @@ ball_dx = 4
 ball_dy = -4
 ball_active = False
 
-# --- Aggiornamento del ciclo principale ---
+# --- lancio della pallina ---
 if ball_active:
     ball.x += ball_dx
     ball.y += ball_dy
