@@ -126,11 +126,3 @@ if keys[pygame.K_d]:
 * Come cambia la posizione del paddle se cambio `(WIDTH - PADDLE_WIDTH) // 2`?
 * Cosa succede se non limito il paddle dentro i bordi della finestra?
 
----
-
-Se vuoi, ti posso preparare la prossima lezione su come far muovere la pallina e farla rimbalzare!
-
----
-
-**Fammi sapere se vuoi che aggiunga altro o se vuoi un esercizio per la classe!**
-
