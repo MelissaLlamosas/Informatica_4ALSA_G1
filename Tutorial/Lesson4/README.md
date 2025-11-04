@@ -112,30 +112,6 @@
 
 ## Codice completo della Lezione 4
 
-```python
-import pygame
-import random
-
-# Inizializza Pygame
-pygame.init()
-
-# Costanti di gioco
-WIDTH, HEIGHT = 480, 640
-PADDLE_WIDTH = 80
-PADDLE_HEIGHT = 15
-BALL_RADIUS = 8
-WHITE = (255, 255, 255)
-PINK = (255, 105, 180)
-FPS = 60
-
-# Finestra di gioco
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Breakout Pygame")
-clock = pygame.time.Clock()
-
-# Paddle
-paddle = pygame.Rect((WIDTH - PADDLE_WIDTH) // 2, HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT)
-paddle_speed = 6
 
 # Pallina
 ball = pygame.Rect(paddle.centerx, paddle.top - BALL_RADIUS*2, BALL_RADIUS*2, BALL_RADIUS*2)
@@ -156,17 +132,6 @@ while running:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             if not ball_active:
                 ball_active = True
-
-    # Movimento paddle
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and paddle.left > 0:
-        paddle.x -= paddle_speed
-        if not ball_active:
-            ball.x -= paddle_speed
-    if keys[pygame.K_RIGHT] and paddle.right < WIDTH:
-        paddle.x += paddle_speed
-        if not ball_active:
-            ball.x += paddle_speed
 
     # Movimento pallina
     if ball_active:
@@ -193,7 +158,4 @@ while running:
     pygame.draw.rect(screen, (0, 0, 0), paddle)
     pygame.draw.circle(screen, PINK, ball.center, BALL_RADIUS)
 
-    # Aggiorna finestra
-    pygame.display.flip()
-
-pygame.quit()
+    
