@@ -1,5 +1,7 @@
 # Lezione 4 — Aggiungere la pallina
 
+![pallina](immages/) 
+
 ## Obiettivo della lezione
 > In questa lezione aggiungeremo la pallina al nostro gioco Breakout.  
 > Impareremo a:
