@@ -71,21 +71,6 @@ for row in range(BLOCK_ROWS):
         blocks.append({'rect': rect, 'color': color, 'hits': 2})
 ```
 
-### Gestione della collisione
-
-```python
-for block in blocks[:]:
-    if ball.colliderect(block['rect']):
-        block['hits'] -= 1  # Il blocco perde una “vita”
-        ball_dy *= -1       # La pallina rimbalza
-
-        if block['hits'] == 1:
-            block['color'] = (150, 150, 150)  # Cambia colore per mostrare il danno
-        elif block['hits'] <= 0:
-            blocks.remove(block)              # Si rompe al secondo colpo
-            score += 1
-        break
-```
 
 **Spiegazione:**
 
@@ -97,12 +82,6 @@ Questo introduce una **meccanica di resistenza**, rendendo il gioco più interes
 
 ---
 
-## 4. Challenge per la classe 
-
-1. Mostra un **messaggio di “Game Over”** quando la pallina cade.
-2. Crea blocchi con **resistenza diversa** (alcuni con 1, altri con 3 colpi).
-
----
 
 ## 5. Domande per riflettere 
 
