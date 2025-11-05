@@ -76,35 +76,7 @@ Il punteggio aiuta il giocatore a monitorare i propri progressi e la precisione 
 
 ---
 
-## 4. Effetti visivi e sonori 
-
-### Effetti sonori
-
-Puoi aggiungere effetti con `pygame.mixer.Sound`:
-
-```python
-hit_sound = pygame.mixer.Sound("hit.wav")
-win_sound = pygame.mixer.Sound("win.wav")
-
-# Quando colpisci un blocco
-hit_sound.play()
-
-# Quando vinci
-win_sound.play()
-```
-
-### Effetti visivi
-
-```python
-if not blocks:
-    screen.fill((200, 255, 200))  # Colore verde chiaro per la vittoria
-```
-
- Questi dettagli rendono il gioco più vivo e divertente.
-
----
-
-## 5. Challenge: blocchi che si rompono solo al secondo colpo 
+## 4. Challenge: blocchi che si rompono solo al secondo colpo 
 
 In questa variante, i blocchi **non si distruggono subito**, ma solo **dopo essere stati colpiti due volte**.
 Per farlo, assegniamo ad ogni blocco una **vita iniziale** di 2 colpi (`'hits': 2`).
