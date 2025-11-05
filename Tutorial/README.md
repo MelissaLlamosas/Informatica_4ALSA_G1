@@ -63,21 +63,6 @@ collision_sound.play()
 * Usa `pygame.mixer.Sound()` per caricare il file audio.
 * Poi chiama `play()` quando si verifica la collisione con un blocco.
 
-### Esempio di animazione dei blocchi che cambiano colore:
-
-Per aggiungere un effetto visivo sui blocchi quando vengono distrutti, puoi farli lampeggiare di un colore diverso:
-
-```python
-for block in blocks[:]:
-    if ball.colliderect(block['rect']):
-        block['color'] = (255, 255, 255)  # Cambia il colore del blocco
-        pygame.time.wait(100)  # L'animazione dura 100 millisecondi
-        blocks.remove(block)  # Rimuovi blocco colpito
-        ball_dy *= -1
-        score += 1
-        break
-```
-
 ---
 
 ## 4. Challenge: Blocchi che si muovono lentamente
