@@ -110,13 +110,6 @@ pygame.draw.circle(screen, PINK, ball.center, BALL_RADIUS)  # pallina rosa
 
 * Modificate la velocità `paddle_speed` durante il gioco con i tasti `A` e `D`:
 
-```python
-if keys[pygame.K_a]:
-    paddle_speed = max(1, paddle_speed - 1)
-if keys[pygame.K_d]:
-    paddle_speed = min(20, paddle_speed + 1)
-```
-
 ---
 
 ## 7. Domande per riflettere
