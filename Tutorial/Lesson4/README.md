@@ -50,6 +50,8 @@
 >             ball_active = True
 > ```
 
+![pallina](../../Images/pallina2.png) 
+
 ---
 
 ### 3. Movimento automatico della pallina
@@ -84,6 +86,8 @@
 >     ball.x = paddle.centerx - BALL_RADIUS
 >     ball.y = paddle.top - BALL_RADIUS*2
 > ```
+
+![pallina](../../Images/pallina3.png) 
 
 ---
 
