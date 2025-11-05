@@ -23,7 +23,7 @@ pygame.display.set_caption("Breakout Pygame")      # Titolo finestra
 clock = pygame.time.Clock()                        # Orologio per FPS
 font = pygame.font.SysFont("Arial", 24)            # Font per testo
  
-# --- Crea blocchi colorati (ora con 'hits': 2 per doppio colpo) ---
+# --- Crea blocchi colorati ---
 colors = [(255, 0, 0), (255, 165, 0), (255, 255, 0),
           (0, 255, 0), (0, 0, 255), (128, 0, 128)]   # Colori possibili
  
@@ -32,7 +32,7 @@ for row in range(BLOCK_ROWS):
     for col in range(BLOCK_COLS):
         rect = pygame.Rect(col * BLOCK_WIDTH, row * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
         color = random.choice(colors)
-        blocks.append({'rect': rect, 'color': color, 'hits': 2})  # Ogni blocco ora ha due "vite"
+        blocks.append({'rect': rect, 'color': color})  # Ogni blocco è un dizionario con rettangolo e colore
  
 # --- Crea paddle (rettangolo controllabile dal giocatore) ---
 paddle = pygame.Rect((WIDTH - PADDLE_WIDTH) // 2, HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT)
@@ -101,17 +101,12 @@ while running:
             offset = (ball.centerx - paddle.centerx) / (PADDLE_WIDTH / 2)
             ball_dx = BALL_RADIUS * offset * 1.5
  
-        # --- Collisione con blocchi (ora richiedono due colpi per rompersi) ---
+        # Collisione con blocchi
         for block in blocks[:]:
             if ball.colliderect(block['rect']):
-                ball_dy *= -1  # Rimbalzo sempre
-                block['hits'] -= 1  # Riduci di 1 i colpi rimanenti
-                
-                if block['hits'] == 1:
-                    block['color'] = (150, 150, 150)  # Cambia colore se danneggiato
-                elif block['hits'] <= 0:
-                    blocks.remove(block)  # Rimuovi solo dopo il secondo colpo
-                    score += 1
+                blocks.remove(block)      # Rimuovi blocco colpito
+                ball_dy *= -1             # Rimbalza
+                score += 1                # Aumenta il punteggio
                 break
  
     # --- Disegna tutto ---
@@ -135,3 +130,4 @@ while running:
  
 # --- Chiude il gioco ---
 pygame.quit()
+ 
