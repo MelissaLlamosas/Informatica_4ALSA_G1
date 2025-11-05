@@ -6,7 +6,7 @@
 * Aggiungere un **messaggio di vittoria** quando tutti i blocchi sono distrutti.
 * **Resettare la pallina** quando cade fuori dallo schermo.
 * Introdurre **effetti grafici e sonori** per migliorare l’esperienza di gioco.
-* **Challenge**: Blocchi che si muovono lentamente o non si cancellano.
+* **Challenge**: Blocchi che si muovono lentamente.
 
 ---
 
