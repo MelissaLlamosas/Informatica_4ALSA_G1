@@ -26,6 +26,7 @@ Cioe “se la pallina tocca il rettangolo del blocco”.
 ---
 
 ### 2. Rimozione del blocco colpito
+![rimuovi_blocco](../../Images/lesson5_2.png)
 
 Una volta percepita la collisione, il blocco viene **rimosso** dalla lista `blocks`:
 
@@ -38,6 +39,9 @@ In questo modo il blocco non verrà più disegnato.
 ---
 
 ### 3. Rimbalzo della pallina
+![pallina_prima](../../Images/lesson5_1.png)
+
+![pallina_dopo](../../Images/lesson5_3.png)
 
 Quando la pallina colpisce un blocco, invertiamo la direzione verticale con `ball_dy`:
 
@@ -50,6 +54,9 @@ Questo fa rimbalzare la pallina verso il basso o verso l’alto.
 ---
 
 ### 4. Aumento del punteggio
+![punteggio_prima](../../Images/lesson5_4.png)
+
+![punteggio_dopo](../../Images/lesson5_5.png)
 
 Ogni volta che un blocco viene distrutto, il punteggio cresce:
 
