@@ -3,7 +3,6 @@
 ### Obiettivi della lezione
 
 * Imparare a **creare il paddle e la pallina** usando `pygame.Rect`
-* Capire come si posizionano gli oggetti nella finestra di gioco
 * Far muovere il paddle con le frecce sinistra e destra
 * Limitare il movimento del paddle ai bordi della finestra
 * Muovere la pallina insieme al paddle quando è ferma
