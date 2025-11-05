@@ -107,9 +107,7 @@ Questo introduce una **meccanica di resistenza**, rendendo il gioco più interes
 ## 5. Domande per riflettere 
 
 * Come potresti indicare visivamente quanti colpi restano a un blocco?
-* Quale strategia rende più divertente il gioco: blocchi forti o tanti blocchi deboli?
 * Come potresti salvare il punteggio più alto?
-* Cosa succederebbe se la pallina colpisse due blocchi nello stesso frame?
 
 
 
