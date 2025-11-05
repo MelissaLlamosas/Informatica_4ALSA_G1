@@ -13,7 +13,7 @@ L’obiettivo è capire come usare i rettangoli (`pygame.Rect`), disporli in gri
 ---
 
 ## Concetti chiave
-
+![blocchi](../../Images/lesson2_1.png)
 ### 1. Uso di `pygame.Rect`
 
 `pygame.Rect` è un oggetto che rappresenta un rettangolo, definito da coordinate **(x, y)** e dimensioni **(larghezza, altezza)**.
