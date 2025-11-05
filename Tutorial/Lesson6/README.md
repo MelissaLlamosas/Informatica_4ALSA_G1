@@ -60,30 +60,9 @@ In un’estensione futura, potresti **ricominciare automaticamente** il gioco in
 In questa variante, i blocchi **non si distruggono subito**, ma solo **dopo essere stati colpiti due volte**.
 Per farlo, assegniamo ad ogni blocco una **vita iniziale** di 2 colpi (`'hits': 2`).
 
-### Creazione dei blocchi con punti vita
-
-```python
-blocks = []
-for row in range(BLOCK_ROWS):
-    for col in range(BLOCK_COLS):
-        rect = pygame.Rect(col * BLOCK_WIDTH, row * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
-        color = random.choice(colors)
-        blocks.append({'rect': rect, 'color': color, 'hits': 2})
-```
-
-
-**Spiegazione:**
-
-* Ogni blocco parte con `hits = 2`.
-* Dopo il primo colpo → `hits` diventa `1` → cambia colore per segnalare che è danneggiato.
-* Dopo il secondo colpo → `hits = 0` → viene rimosso dalla lista (`blocks.remove`).
-
-Questo introduce una **meccanica di resistenza**, rendendo il gioco più interessante.
-
 ---
 
-
-## 5. Domande per riflettere 
+## 4. Domande per riflettere 
 
 * Come potresti indicare visivamente quanti colpi restano a un blocco?
 * Come potresti salvare il punteggio più alto?
