@@ -93,8 +93,6 @@ while running:
         # --- TODO: GAME OVER se la pallina cade ---
         if ball.bottom >= HEIGHT:
             # TODO: mostra messaggio "GAME OVER"
-            # TODO: resetta la pallina sopra il paddle
-            # TODO: imposta ball_active = False
             pass
  
         # --- Collisione con paddle ---
@@ -102,15 +100,7 @@ while running:
             ball_dy *= -1
             offset = (ball.centerx - paddle.centerx) / (PADDLE_WIDTH / 2)
             ball_dx = BALL_RADIUS * offset * 1.5
- 
-        # --- TODO: Blocchi che si rompono al secondo colpo ---
-        for block in blocks[:]:
-            if ball.colliderect(block['rect']):
-                # TODO: riduci block['hits'] di 1
-                # TODO: se block['hits'] == 1 → cambia colore (es. grigio)
-                # TODO: se block['hits'] <= 0 → rimuovi blocco e aumenta score
-                # TODO: inverti direzione verticale (ball_dy *= -1)
-                pass
+
  
     # --- Disegna ---
     draw_blocks()                                
@@ -124,9 +114,6 @@ while running:
     # --- TODO: Vittoria ---
     if not blocks:
         # TODO: mostra messaggio "Hai Vinto!"
-        # TODO: pygame.display.flip()
-        # TODO: pygame.time.wait(2000)
-        # TODO: running = False
         pass
  
     pygame.display.flip()
