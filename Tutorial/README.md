@@ -5,7 +5,7 @@
 * Imparare a gestire la **vittoria** e la **sconfitta** nel gioco.
 * Aggiungere un **messaggio di vittoria** quando tutti i blocchi sono distrutti.
 * **Resettare la pallina** quando cade fuori dallo schermo.
-* Introdurre **effetti grafici e sonori** per migliorare l’esperienza di gioco.
+* Introdurre **effetti grafici / sonori** per migliorare l’esperienza di gioco.
 * **Challenge**: Blocchi che si muovono lentamente.
 
 ---
