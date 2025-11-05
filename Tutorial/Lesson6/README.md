@@ -6,7 +6,6 @@
 * Gestire la **fine del gioco** (quando la pallina cade).
 * Mostrare un **messaggio di vittoria** quando tutti i blocchi sono distrutti.
 * **Resettare la pallina** per far ripartire il gioco.
-* Aggiungere **punteggio** e semplici **effetti visivi o sonori**.
 * Proporre una **challenge**: blocchi che si rompono solo dopo due colpi.
 
 ---
