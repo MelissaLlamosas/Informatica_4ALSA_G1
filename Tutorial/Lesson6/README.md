@@ -51,21 +51,15 @@ if not blocks:
 * Se sì, mostra “Hai Vinto!” al centro dello schermo per 2 secondi.
 * Poi il gioco termina (`running = False`).
 
-In un’estensione futura, potresti **ricominciare automaticamente** il gioco invece di chiuderlo.
-
 ---
 
 ## 3. Challenge: blocchi che si rompono solo al secondo colpo 
 
 In questa variante, i blocchi **non si distruggono subito**, ma solo **dopo essere stati colpiti due volte**.
-Per farlo, assegniamo ad ogni blocco una **vita iniziale** di 2 colpi (`'hits': 2`).
+Per farlo, assegna ad ogni blocco una **vita iniziale** di 2 colpi.
 
 ---
 
-## 4. Domande per riflettere 
-
-* Come potresti indicare visivamente quanti colpi restano a un blocco?
-* Come potresti salvare il punteggio più alto?
 
 
 
