@@ -17,7 +17,6 @@ paddle_speed = 6
 * `pygame.Rect(x, y, width, height)` crea un rettangolo.
 * `x = (WIDTH - PADDLE_WIDTH) // 2`: posiziona il paddle orizzontalmente al centro.
 * `y = HEIGHT - 40`: il paddle è vicino al bordo basso della finestra, a 40 pixel di distanza.
-* `PADDLE_WIDTH = 80`, `PADDLE_HEIGHT = 15` definiscono dimensioni del paddle.
 * `paddle_speed = 6` indica di quanti pixel si sposta il paddle ogni aggiornamento.
 
 ## 2. Creare la pallina (un rettangolo che contiene un cerchio)
