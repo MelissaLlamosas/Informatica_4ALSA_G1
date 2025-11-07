@@ -62,58 +62,21 @@ if keys[pygame.K_RIGHT] and paddle.right < WIDTH:
 
 ---
 
-## 4. Riassunto del codice completo (solo paddle e pallina)
-
-```python
-# Costanti
-WIDTH, HEIGHT = 480, 640
-PADDLE_WIDTH = 80
-PADDLE_HEIGHT = 15
-BALL_RADIUS = 8
-
-# Creazione paddle e pallina
-paddle = pygame.Rect((WIDTH - PADDLE_WIDTH) // 2, HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT)
-paddle_speed = 6
-
-ball = pygame.Rect(paddle.centerx, paddle.top - BALL_RADIUS*2, BALL_RADIUS*2, BALL_RADIUS*2)
-ball_dx = 4
-ball_dy = -4
-ball_active = False
-
-# Movimento paddle
-keys = pygame.key.get_pressed()
-
-if keys[pygame.K_LEFT] and paddle.left > 0:
-    paddle.x -= paddle_speed
-    if not ball_active:
-        ball.x -= paddle_speed
-
-if keys[pygame.K_RIGHT] and paddle.right < WIDTH:
-    paddle.x += paddle_speed
-    if not ball_active:
-        ball.x += paddle_speed
-```
-
----
-
-## 5. Disegnare paddle e pallina nello schermo
+## 4. Disegnare paddle e pallina nello schermo
 
 ```python
 pygame.draw.rect(screen, (0, 0, 0), paddle)  # paddle nero
 pygame.draw.circle(screen, PINK, ball.center, BALL_RADIUS)  # pallina rosa
 ```
+Mostra il paddle e la pallina nello schermo.
 
 ---
 
-## 6. Challenge per la classe
+## 5. Challenge
 
-* Modificate la velocità `paddle_speed` durante il gioco con i tasti `A` e `D`:
+* Modifica la velocità `paddle_speed` durante il gioco con i tasti `A` e `D`:
 
 ---
 
-## 7. Domande per riflettere
 
-* Perché usiamo un rettangolo anche per la pallina che è un cerchio?
-* Come cambia la posizione del paddle se cambio `(WIDTH - PADDLE_WIDTH) // 2`?
-* Cosa succede se non limito il paddle dentro i bordi della finestra?
 
