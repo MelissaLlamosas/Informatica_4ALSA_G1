@@ -1,7 +1,7 @@
 # Informatica_4ALSA_G1
 # Breakout Game – Python & Pygame
 
-![gif](/Images/gamev1.gif) 
+![gif](/Images/gamev2.gif) 
 
 
 Questo progetto è una semplice versione del classico gioco **Breakout**, realizzata in **Python** con la libreria **Pygame**.  
