@@ -115,53 +115,22 @@
 > In questo esempio usiamo un colore rosa, ma puoi cambiarlo come preferisci.
 
 ---
+## Challenge
 
-## Codice completo della Lezione 4
+# 🎯 Sfida: Aggiungi le Palline
 
+Muovi il paddle, lancia la pallina con **SPAZIO**  
+e premi **X** per aggiungerne altre!  
+Riesci a tenerle tutte in gioco?
 
-# Pallina
-ball = pygame.Rect(paddle.centerx, paddle.top - BALL_RADIUS*2, BALL_RADIUS*2, BALL_RADIUS*2)
-ball_dx = 4
-ball_dy = -4
-ball_active = False
+```python
+import pygame
+pygame.init()
 
-# Loop principale
-running = True
-while running:
-    clock.tick(FPS)
-    screen.fill(WHITE)
+# Crea finestra e paddle
+screen = pygame.display.set_mode((800, 600))
+paddle = pygame.Rect(350, 550, 100, 15)
 
-    # Eventi
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            if not ball_active:
-                ball_active = True
-
-    # Movimento pallina
-    if ball_active:
-        ball.x += ball_dx
-        ball.y += ball_dy
-
-        # Rimbalzo sui bordi
-        if ball.left <= 0 or ball.right >= WIDTH:
-            ball_dx *= -1
-        if ball.top <= 0:
-            ball_dy *= -1
-        if ball.bottom >= HEIGHT:
-            ball_active = False
-            ball.x = paddle.centerx - BALL_RADIUS
-            ball.y = paddle.top - BALL_RADIUS*2
-
-        # Rimbalzo sul paddle
-        if ball.colliderect(paddle):
-            ball_dy *= -1
-            offset = (ball.centerx - paddle.centerx) / (PADDLE_WIDTH / 2)
-            ball_dx = BALL_RADIUS * offset * 1.5
-
-    # Disegna paddle e pallina
-    pygame.draw.rect(screen, (0, 0, 0), paddle)
-    pygame.draw.circle(screen, PINK, ball.center, BALL_RADIUS)
-
-    
+# Prima pallina
+ball = pygame.Rect(395, 530, 10, 10)
+balls = [ball]  # lista di palline
