@@ -44,6 +44,7 @@ if not blocks:
     pygame.time.wait(2000)
     running = False
 ```
+![vittoria](../../Images/lezione6_2.png)
 
 **Cosa succede:**
 
