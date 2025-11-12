@@ -35,6 +35,7 @@ ball_active = False
 * `ball_dx` e `ball_dy` sono le velocità orizzontale e verticale.
 * `ball_active` è False: la pallina è ferma finché non premi spazio.
 
+![pallina](../../Images/lezione3_1.png)
 ---
 
 ## 3. Muovere il paddle con le frecce
