@@ -1,5 +1,7 @@
 # Informatica_4ALSA_G1
 # Breakout Game – Python & Pygame
+![gif](../../Images/game.gif) 
+
 
 Questo progetto è una semplice versione del classico gioco **Breakout**, realizzata in **Python** con la libreria **Pygame**.  
 L’obiettivo del gioco è rompere tutti i blocchi colorati con la pallina, controllando il paddle nella parte inferiore dello schermo.  
