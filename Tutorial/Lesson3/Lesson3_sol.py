@@ -50,7 +50,3 @@ while running:
         paddle.x += paddle_speed
         if not ball_active:
             ball.x += paddle_speed
-
-    # --- Challenge (facoltativo): cambia velocità con tasti A e D ---
-    if keys[pygame.K_a]:
-        paddle_speed = max(1, pad_
