@@ -38,8 +38,6 @@ while running:
 
     # --- TODO: Movimento del paddle con frecce sinistra e destra ---
 
-
-    # --- TODO: Challenge (facoltativo): cambia velocità con tasti A e D ---
  
 
     # --- TODO: Disegna paddle e pallina ---
