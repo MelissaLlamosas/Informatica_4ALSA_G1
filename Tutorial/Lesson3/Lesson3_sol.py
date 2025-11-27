@@ -50,3 +50,7 @@ while running:
         paddle.x += paddle_speed
         if not ball_active:
             ball.x += paddle_speed
+
+#---Disegna nello schermo---
+pygame.draw.rect(screen, (0, 0, 0), paddle) 
+pygame.draw.circle(screen, PINK, ball.center, BALL_RADIUS)  
