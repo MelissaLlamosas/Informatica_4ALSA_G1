@@ -24,9 +24,8 @@ clock = pygame.time.Clock()
 font = pygame.font.SysFont("Arial", 24)            
  
 # --- Crea blocchi colorati ---
-colors = [(255, 0, 0), (255, 165, 0), (255, 255, 0),
-          (0, 255, 0), (0, 0, 255), (128, 0, 128)]   
-
+colors = [(192, 222, 234), (252, 186, 205), (208, 193, 251), (249, 181, 99), (196, 242, 240), (207, 252, 170)]
+ 
 blocks = []  
 for row in range(BLOCK_ROWS):
     for col in range(BLOCK_COLS):
